@@ -1,13 +1,32 @@
-import axios from "axios"
+import axios from "axios";
 
-axios.get('https://api.github.com/users/mapbox')
+let res : string[] = [];
+
+axios.get('https://api.github.com/users/davidgan1218')
   .then((response) => {
-    console.log(response.data);
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
+    //console.log(response.data)
+    for (const property in response.data){
+        //console.log(response.data[property])
+        if (typeof response.data[property] === 'string' && response.data[property].startsWith("http")){
+            res.push(response.data[property]);
+        }
+    }
+    console.log(res);
+    //console.log(obj)
+    //console.log(response.data)
+    // console.log("-------------")
+    // console.log(response.data);
+    // console.log("-------------")
+    // console.log(response.status);
+    // console.log("-------------")
+    // console.log(response.statusText);
+    // console.log("-------------")
+    // console.log(response.headers);
+    // console.log("-------------")
+    // console.log(response.config);
   });
+
+
 
 
 // import * as request from 'request';
