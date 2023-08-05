@@ -1,5 +1,5 @@
-Search Engine: <script async src="https://cse.google.com/cse.js?cx=342d2dff309d247e3">
+Search Engine: <script async src="https://cse.google.com/cse.js?cx=3431c9d1ed5914f6d">
 </script>
 <div class="gcse-search"></div>
 
-Key: AIzaSyDZAw5NdxYwrNaclIKNzBaugVXmYiF1sm4
+Key: AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs

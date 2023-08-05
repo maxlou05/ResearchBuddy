@@ -1,19 +1,36 @@
 import axios from "axios";
 
 
-// var search_topic = new String("Math");
+async function getLinks(topic : string){
+    let res : string[] = [];
 
-let res : string[] = [];
-
-
-axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyDZAw5NdxYwrNaclIKNzBaugVXmYiF1sm4&cx=342d2dff309d247e3&q=" + "numbers")
-    .then((response) => {
+    const response = await axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + topic)
     //console.log(response.data.items)
     for (const property of response.data.items){
         res.push(property.link)
     }
-    console.log(res);
-    });
+    //console.log(response.data);
+    //console.log(response.data.items)
+    return res;
+}
+
+async function printResult(){
+    let x = await getLinks("TOPIC"); // input whatever topic you want to search
+    console.log(x);
+}
+printResult();
+
+
+//---------------------IGONORE STUF BELOW -----------------------------
+
+// axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + "numbers")
+//     .then((response) => {
+//     //console.log(response.data.items)
+//     for (const property of response.data.items){
+//         res.push(property.link)
+//     }
+//     console.log(res);
+//     });
 
     // for (const property in response.data){
     //     //console.log(response.data[property])
