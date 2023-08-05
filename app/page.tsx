@@ -1,8 +1,5 @@
-import Image from 'next/image';
-import { TypeAnimation } from 'react-type-animation';
-import getTopics from './search/getTopics';
-import { useState } from 'react';
-import SearchBar from './SearchBar';
+import React from "react"
+import SearchBar from './SearchBar'
 
 export default function Home() {
 
