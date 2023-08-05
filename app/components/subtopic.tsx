@@ -1,7 +1,8 @@
 'use client'
 
 import React from "react"
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import SearchIcon from '@mui/icons-material/Search'
+import LinkIcon from '@mui/icons-material/Link'
 
 export default function Subtopic({ title } : { title: string }) {
     function clickIcon() {
@@ -14,8 +15,9 @@ export default function Subtopic({ title } : { title: string }) {
 
     return (
         <div className="flex flex-row justify-start font-sans p-3 gap-3 items-center">
-            <p className="text-xl hover:text-sky-500" onClick={clickTitle}>{title}</p>
-            <KeyboardArrowRightIcon onClick={clickIcon} className="transition-transform hover:translate-x-1 motion-reduce:transform-none"/>
+            <p className="text-xl hover:text-sky-500">{title}</p>
+            <SearchIcon onClick={clickTitle} className=""/>
+            {/* <LinkIcon onClick={clickIcon} className=""/> */}
         </div>
     )
 }

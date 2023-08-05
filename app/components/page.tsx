@@ -2,11 +2,13 @@ import React from "react"
 import Subtopic from "./subtopic"
 import History from "./history"
 
-const subtopics = ["Subtopic 1", "Fire", "Water"]
+const links = ["https://www.google.com/", "https://www.microsoft.com/en-ca/"]
+const history = [{topic: "Subtopic 1", links: links}, {topic: "Fire", links: links}, {topic: "Water", links: links}]
+const subtopics = ["Fire", "Water"]
 
 export default function Test() {
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-row gap-12">
             <div className="flex flex-col justify-start">
                 {subtopics.map((value: string, index: number, array: string[]) => {
                 return (
@@ -15,7 +17,7 @@ export default function Test() {
             })}
             </div>
             
-            <History hist={subtopics}/>
+            <History hist={history}/>
         </div>
     )
 }
