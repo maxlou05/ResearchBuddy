@@ -15,13 +15,13 @@ async function getLinks(topic : string){
 }
 
 async function printResult(){
-    let x = await getLinks("TOPIC"); // input whatever topic you want to search
+    let x = await getLinks("number theory"); // input whatever topic you want to search
     console.log(x);
 }
 printResult();
 
 
-//---------------------IGONORE STUF BELOW -----------------------------
+//---------------------IGONORE STUFF BELOW -----------------------------
 
 // axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + "numbers")
 //     .then((response) => {
