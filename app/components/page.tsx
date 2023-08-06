@@ -2,7 +2,7 @@ import React from "react"
 import Subtopic from "./subtopic"
 import History from "./history"
 
-const links = [{name: "Google", url: "https://www.google.com/", status: 2}, {name: "Microsoft", url: "https://www.microsoft.com/en-ca/", status: 1}, {name: "Yahoo!", url: "https://ca.yahoo.com/?p=us&guccounter=1", status: 0}]
+const links = [{name: "Google", url: "https://www.google.com/", status: 1}, {name: "Microsoft", url: "https://www.microsoft.com/en-ca/", status: 1}, {name: "Yahoo!", url: "https://ca.yahoo.com/?p=us&guccounter=1", status: 0}, {name: "Burnside's Lemma | Brilliant", url: "https://brilliant.org/wiki/burnsides-lemma/", status: 2}]
 const history = [{topic: "Subtopic 1", links: links}, {topic: "Fire", links: links}, {topic: "Water", links: links}]
 const subtopics = ["Fire", "Water"]
 
