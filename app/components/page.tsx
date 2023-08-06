@@ -22,13 +22,7 @@ export default function Test() {
             
             <History hist={history} onRevisit={(topic: string) => {alert(`${topic} has been clicked`)}}/>
 
-            <div className="flex flex-col justify-start">
-                {links.map((value: {name: string, url: string, status: number}) => {
-                    return (
-                        <Links link={value} onCite={() => {alert(`${value.name} has been cited`)}}/>
-                    )
-                })}
-            </div>
+            <Links links={links} onCite={(url: string) => {alert(`${url} has been cited`)}}/>
         </div>
     )
 }
