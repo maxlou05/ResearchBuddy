@@ -1,4 +1,4 @@
-import Subtopic from "./subtopic"
+import SubTopics from "./SubTopic"
 
 const subtopics = ["Subtopic 1", "Fire", "Water"]
 
