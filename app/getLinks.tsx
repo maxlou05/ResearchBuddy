@@ -15,7 +15,7 @@ async function getLinks(topic : string){
 }
 
 async function printResult(){
-    let x = await getLinks("TOPIC"); // input whatever topic you want to search
+    let x = await getLinks("number theory"); // input whatever topic you want to search
     console.log(x);
 }
 printResult();

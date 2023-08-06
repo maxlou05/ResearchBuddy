@@ -37,7 +37,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var axios_1 = require("axios");
-// var search_topic = new String("Math");
 function getLinks(topic) {
     return __awaiter(this, void 0, void 0, function () {
         var res, response, _i, _a, property;
@@ -67,7 +66,7 @@ function printResult() {
         var x;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getLinks("numbers")];
+                case 0: return [4 /*yield*/, getLinks("number theory")];
                 case 1:
                     x = _a.sent();
                     console.log(x);
@@ -77,6 +76,7 @@ function printResult() {
     });
 }
 printResult();
+//---------------------IGONORE STUF BELOW -----------------------------
 // axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + "numbers")
 //     .then((response) => {
 //     //console.log(response.data.items)
