@@ -4,7 +4,7 @@ import axios from "axios";
 async function getLinks(topic : string){
     let res : string[] = [];
 
-    const response = await axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + topic)
+    const response = await axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + topic + "research paper doctype pdf")
     //console.log(response.data.items)
     for (const property of response.data.items){
         res.push(property.link)

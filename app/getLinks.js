@@ -44,7 +44,7 @@ function getLinks(topic) {
             switch (_b.label) {
                 case 0:
                     res = [];
-                    return [4 /*yield*/, axios_1.default.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + topic)
+                    return [4 /*yield*/, axios_1.default.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs&cx=3431c9d1ed5914f6d&q=" + topic + "research paper doctype pdf")
                         //console.log(response.data.items)
                     ];
                 case 1:

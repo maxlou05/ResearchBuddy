@@ -2,7 +2,7 @@ import React from "react"
 import Subtopic from "./subtopic"
 import History from "./history"
 
-const links = ["https://www.google.com/", "https://www.microsoft.com/en-ca/", "https://ca.yahoo.com/?p=us&guccounter=1"]
+const links = ["https://www.google.com/", "https://www.microsoft.com/en-ca/", "https://ca.yahoo.com/?p=us&guccounter=1", "https://brilliant.org/wiki/burnsides-lemma/"]
 const history = [{topic: "Subtopic 1", links: links}, {topic: "Fire", links: links}, {topic: "Water", links: links}]
 const subtopics = ["Fire", "Water"]
 
