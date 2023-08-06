@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai"
 
-export default async function getTopics(query) {
+export default async function getTopics(query, top_n) {
   const configuration = new Configuration({
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   })
@@ -13,5 +13,5 @@ export default async function getTopics(query) {
   });
   
   const topicsString = chatCompletion.data.choices[0].message.content;
-  return topicsString.split(', ');
+  return topicsString.split(', ').slice(0, top_n);
 }

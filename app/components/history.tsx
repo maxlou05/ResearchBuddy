@@ -47,7 +47,7 @@ export default function History({ hist }: { hist: {topic: string, links: {name: 
                                         return (
                                             <div className="flex flex-row gap-3 ms-20 me-10">
                                                 <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light p-1 hover:text-sky-500">{link.name}</a>
-                                                <SchoolIcon fontSize="small" className="self-center fill-slate-600"/>
+                                                <SchoolIcon fontSize="small" className="self-center fill-slate-600 dark:fill-slate-800"/>
                                             </div>
                                         )
                                     default:
