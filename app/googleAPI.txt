@@ -2,4 +2,15 @@ Search Engine: <script async src="https://cse.google.com/cse.js?cx=802145aa9dfb7
 </script>
 <div class="gcse-search"></div>
 
+Key: AIzaSyAFPfgU70wd-F8RQow2GI75vrmOBv50qXs
+
+
+------------------------------------------------------------
+
+This search engine has its scope limited to 20 selected websites
+
+Search Engine: <script async src="https://cse.google.com/cse.js?cx=802145aa9dfb74ae6">
+</script>
+<div class="gcse-search"></div>
+
 Key: AIzaSyCb_IwchS4Z4eT7P32JfWPO2B0cqG9Ffv0
