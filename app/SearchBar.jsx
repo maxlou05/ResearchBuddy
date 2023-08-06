@@ -12,22 +12,22 @@ export default function SearchBar() {
   const [history, setHistory] = useState([])
   const [links, setLinks] = useState([])
 
-  const searchTopics = async (e=null) => {
+  const searchTopics = async (e=null, q=query) => {
     if(e) e.preventDefault()
     // console.log(await getLinks('cheese'))
 
-    const topics = await getTopics(query, 10)
-    const links = await getLinks(query)
+    const topics = await getTopics(q, 10)
+    const links = await getLinks(q)
 
     console.log(topics, links)
     setLinks(links)
     setResults(topics)
-    setHistory([...history, {topic: query, links: links}]);
+    setHistory([...history, {topic: q, links: links}]);
   }
 
   const topicClick = (topic) => async () => {
     setQuery(topic)
-    await searchTopics()
+    await searchTopics(null, topic)
   }
 
   // const arrowClick = (topic) => async () => {
