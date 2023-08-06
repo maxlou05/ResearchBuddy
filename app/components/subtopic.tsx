@@ -14,10 +14,9 @@ export default function Subtopic({ title } : { title: string }) {
     }
 
     return (
-        <div className="flex flex-row justify-start font-sans p-3 gap-3 items-center">
+        <div onClick={clickTitle} className="flex flex-row justify-start font-sans p-3 gap-3 items-center hover:bg-slate-300">
             <p className="text-xl hover:text-sky-500">{title}</p>
-            <SearchIcon onClick={clickTitle} className=""/>
-            {/* <LinkIcon onClick={clickIcon} className=""/> */}
+            <SearchIcon/>
         </div>
     )
 }

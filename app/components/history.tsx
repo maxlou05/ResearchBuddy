@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import HistoryIcon from '@mui/icons-material/History'
 
-export default function History({ hist }: { hist: {topic: string, links: string[]}[] }) {
+export default function History({ hist }: { hist: {topic: string, links: {name: string, url: string}[]}[] }) {
     const [visible, setVisible] = useState(false)
 
     const clickHistory = (topic: string) => () => {
@@ -17,15 +17,15 @@ export default function History({ hist }: { hist: {topic: string, links: string[
                 <div>
                     <p className="text-3xl p-6 font-bold">Research History</p>
                     {/* Use {} to indicate switch from HTML to JS */}
-                    {hist.map((value: {topic: string, links: string[]}) => {
+                    {hist.map((value: {topic: string, links: {name: string, url: string}[]}) => {
                         // list.map is a function that takes another function as a parameter, and returns a list of the specified elements
                         return (
                         <div className="flex flex-col justify-start">
                             {/* className is for styling with tailwind, see tailwind */}
-                            <p className="text-xl ms-10 me-10 font-medium p-3 hover:text-sky-500" onClick={clickHistory(value.topic)}>{value.topic}</p>
-                            {value.links.map((link: string) => {
+                            <p className="text-xl ms-10 me-10 font-medium p-3 hover:text-sky-500 break-all" onClick={clickHistory(value.topic)}>{value.topic}</p>
+                            {value.links.map((link: {name: string, url: string}) => {
                                 return (
-                                    <a href={link} target="_blank" rel="noopener noreferrer" className="text-m ms-20 me-10 font-light p-1 hover:text-sky-500">{link}</a>
+                                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m ms-20 me-10 font-light p-1 hover:text-sky-500 break-all">{link.name}</a>
                                 )
                             })}
                             <hr className="ms-10 me-10 min-w-fit border-slate-500 border-opacity-40"/>
