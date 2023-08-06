@@ -5,19 +5,11 @@ import HistoryIcon from '@mui/icons-material/History'
 import VerifiedIcon from '@mui/icons-material/Verified'
 import SchoolIcon from '@mui/icons-material/School'
 
-// prob move this to a different file
-let trustedSites : string[] = ["https://scholar.google.ru", "https://www.jstor.org/", "https://academic.microsoft.com/home", "https://us.sagepub.com/en-us/nam/home",
-"https://www.tandfonline.com/", "https://www.sciencedirect.com/", "https://www.academia.edu/", "http://digital.library.wisc.edu/1711.web/scopus",
-"https://www.bbc.com/news", "https://www.economist.com/", "https://www.wsj.com/", "https://news.google.com/topstories?gl=US&hl=en-US&ceid=US:en&ceid=US:en",
-"https://www.theguardian.com/international", "https://edition.cnn.com/", "https://www.wikipedia.org", "https://www.britannica.com",
-"https://brilliant.org", "https://www.nasa.gov/", "https://www.scientificamerican.com/", "https://www.popsci.com/", 
-"https://www.nationalgeographic.com/","https://www.google.com/", "https://www.microsoft.com/en-ca/" ];
-
-export default function History({ hist }: { hist: {topic: string, links: {name: string, url: string, status: number}[]}[] }) {
+export default function History({ hist, onRevisit }: { hist: {topic: string, links: {name: string, url: string, status: number}[]}[], onRevisit: (topic: string) => void }) {
     const [visible, setVisible] = useState(false)
 
     const clickHistory = (topic: string) => () => {
-        alert(topic)
+        onRevisit(topic)
     }
 
     return (

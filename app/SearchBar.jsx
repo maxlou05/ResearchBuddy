@@ -12,7 +12,7 @@ export default function SearchBar() {
   const [history, setHistory] = useState([])
   const [links, setLinks] = useState([])
 
-  const searchTopics = async (e=null, q=query) => {
+  const searchTopics = async (e=null, q=query, updateHist=true) => {
     if(e) e.preventDefault()
     // console.log(await getLinks('cheese'))
 
@@ -22,7 +22,7 @@ export default function SearchBar() {
     console.log(topics, links)
     setLinks(links)
     setResults(topics)
-    setHistory([...history, {topic: q, links: links}]);
+    if(updateHist) setHistory([...history, {topic: q, links: links}])
   }
 
   const topicClick = (topic) => async () => {
@@ -30,9 +30,10 @@ export default function SearchBar() {
     await searchTopics(null, topic)
   }
 
-  // const arrowClick = (topic) => async () => {
-  //   setLinks(await getLinks(topic))
-  // }
+  const historyClick = async (topic) => {
+    setQuery(topic)
+    await searchTopics(null, topic, false)
+  }
 
   return (
     <>
@@ -51,7 +52,7 @@ export default function SearchBar() {
         </form>
         <div className="flex flex-row">
           
-          <History hist={history} />
+          <History hist={history} onRevisit={historyClick}/>
 
           <div>
             {results.map((topic) => (
