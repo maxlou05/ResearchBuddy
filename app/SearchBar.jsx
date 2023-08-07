@@ -86,7 +86,7 @@ export default function SearchBar() {
             ))}
           </div>
           
-          <Links links={links} onCite={(url) => alert(url)} onVisit={(link) => onVisit(link)}/>
+          <Links links={links} onCite={(url) => alert(`${url} has been cited`)} onVisit={(link) => onVisit(link)}/>
         </div>
       </div>
     </>

@@ -22,6 +22,7 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
         let citations = []
         if(json) citations = JSON.parse(json)
         if(!citations.find((element: string) => {return element==citeHTML})) citations.push(citeHTML)
+        citations.sort()
         localStorage.setItem('citations', JSON.stringify(citations))
     }
 
