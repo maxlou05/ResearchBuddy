@@ -1,35 +1,18 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import fetchCitation from './fetchCitation';
 
 export default function Page() {
-  const [citations, setCitations] = useState([]);
+  const [citations, setCitations] = useState([])
 
   useEffect(() => {
     // Function to fetch citations from localStorage or set an empty array if not available
     const getCitationsFromLocalStorage = () => {
-      const json = localStorage.getItem('citations');
-      if (json) {
-        return JSON.parse(json);
-      } else {
-        return [];
-      }
+      const json = localStorage.getItem('citations')
+      if (json) setCitations(JSON.parse(json))
     };
 
-    const fetchCitations = async () => {
-      const citationsFromLocalStorage = getCitationsFromLocalStorage();
-      const fetchedCitations = await Promise.all(
-        citationsFromLocalStorage.map(async (url) => {
-          const citationHTML = await fetchCitation(url);
-          return citationHTML;
-        })
-      );
-      console.log(citationsFromLocalStorage)
-      setCitations(fetchedCitations);
-    };
-
-    fetchCitations();
+    getCitationsFromLocalStorage()
   }, []);
 
   return (
