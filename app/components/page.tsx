@@ -22,7 +22,7 @@ export default function Test() {
             
             <History hist={history} onRevisit={(topic: string) => {alert(`${topic} has been clicked`)}}/>
 
-            <Links links={links} onCite={(url: string) => {alert(`${url} has been cited`)}}/>
+            <Links links={links} onCite={(url: string) => {alert(`${url} has been cited`)}} onVisit={(url: string) => {alert(`${url} has been added to history`)}}/>
         </div>
     )
 }
