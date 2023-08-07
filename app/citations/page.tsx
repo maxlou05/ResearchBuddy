@@ -1,6 +1,8 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
+import DeleteIcon from '@mui/icons-material/Delete'
+
 
 const copyInnerHTMLRecursive = (element) => {
     let copiedHTML = element.innerText
@@ -33,6 +35,16 @@ export default function Page() {
     alert('Citations copied!')
   }
 
+  const deleteCitation = (citation) => {
+    const json = localStorage.getItem('citations')
+    let citations = []
+    if(json) citations = JSON.parse(json)
+    citations = citations.filter(c => {return c!=citation})
+
+    localStorage.setItem('citations', JSON.stringify(citations))
+    setCitations(citations)
+  }
+
   useEffect(() => {
     const getCitationsFromLocalStorage = () => {
       const json = localStorage.getItem('citations')
@@ -56,14 +68,17 @@ export default function Page() {
             <span className="sr-only">Loading...</span>
         </div>
         }
-        <div ref={citationRef}>
-            {citations.map((citationHTML) => (
-              <div className="pb-6" dangerouslySetInnerHTML={{ __html: citationHTML }} />
-            ))}
-        </div>
         <button onClick={copyClick} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
           Copy Citations
         </button>
+        <div ref={citationRef}>
+          {citations.map((citationHTML) => (
+            <div className="flex flex-row pt-6">
+              <div dangerouslySetInnerHTML={{ __html: citationHTML }}/>
+              <DeleteIcon className="cursor-pointer" onClick={() => deleteCitation(citationHTML)}/>
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
