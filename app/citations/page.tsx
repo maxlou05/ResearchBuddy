@@ -2,7 +2,7 @@
 //combine later 
 
 import axios from 'axios';
-import fetchHTML from './fetchHTML';
+import fetchHTML from './fetchCitation';
 import parseData from './parseData';
 import Citations from "./citations";
 import React, { useEffect, useState } from 'react';

@@ -12,15 +12,15 @@ export default function Links({ links, onCite, onVisit } : { links: {name: strin
         if(auto) onCite(url)
     }
 
-    const onClickLink = (url: string) => () => {
-        if(autoCite) onCite(url)
-        onVisit(url)
+    const onClickLink = (link: {name: string, url: string, status: number}) => () => {
+        if(autoCite) onCite(link)
+        onVisit(link)
     }
 
     return (
         <div className="flex flex-col justify-start font-sans gap-4">
             <div className="flex flex-row justify-between">
-                <p className="text-3xl font-bold">{`${links.length} Results`}</p>
+                <p className="text-2xl font-bold">{`${links.length} Results`}</p>
                 <FormControlLabel control={<Switch checked={autoCite} onChange={() => {setAutoCite(!autoCite)}} />} label="Auto-Cite" />
             </div>
             
@@ -28,12 +28,11 @@ export default function Links({ links, onCite, onVisit } : { links: {name: strin
                 return (
                     <div className="flex flex-col font-sans">
                         <div className="flex flex-row justify-start p-1 gap-3 items-center">
-                            <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link.url)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
+                            <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
                             <BookmarkAddIcon onClick={cite(link.url)}/>
                         </div>
                         <p className="text-sm ms-10 -mt-4">{link.url}</p>
                     </div>
-                    
                 )
             })}
         </div>

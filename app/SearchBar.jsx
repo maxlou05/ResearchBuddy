@@ -5,6 +5,7 @@ import getTopics from './search/getTopics'
 import SubTopic from './components/SubTopic'
 import getLinks from './search/getLinks'
 import History from './components/History'
+import Links from './components/Links'
 
 export default function SearchBar() {
   const [query, setQuery] = useState('')
@@ -22,7 +23,7 @@ export default function SearchBar() {
     console.log(topics, links)
     setLinks(links)
     setResults(topics)
-    if(updateHist) setHistory([...history, {topic: q, links: links}])
+    if(updateHist) setHistory([...history, {topic: q, links: []}])
   }
 
   const topicClick = (topic) => async () => {
@@ -35,9 +36,25 @@ export default function SearchBar() {
     await searchTopics(null, topic, false)
   }
 
+  const onVisit = async (link, q=query) => {
+    var currentQuery = history.filter(item => {
+      return item.topic == q
+    })[0]
+
+    currentQuery.links.push(link)
+    console.log(currentQuery)
+
+    var newHistory = history.filter(item => {
+      return item.topic != q
+    })
+
+    console.log([...newHistory, currentQuery])
+    setHistory([...newHistory, currentQuery])
+  }
+
   return (
     <>
-      <div className="flex flex-col space-between">
+      <div className="flex flex-col justify-between">
         <form onSubmit={searchTopics}>
           <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
           <div className="relative" style={{width: 75 + 'em'}}>
@@ -59,6 +76,8 @@ export default function SearchBar() {
               <SubTopic title={topic} onTitleClick={topicClick(topic)}/>
             ))}
           </div>
+          
+          <Links links={links} onCite={(url) => alert(url)} onVisit={(link) => onVisit(link)}/>
         </div>
       </div>
     </>
