@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
+import fetchCitation from "../citations/fetchCitation"
 
 interface Link {
     name: string,
@@ -14,13 +15,14 @@ interface Link {
 export default function Links({ links, onCite, onVisit } : { links: Link[], onCite: (url: string) => void, onVisit: (link: Link) => void }) {
     const [autoCite, setAutoCite] = useState(false)
 
-    const cite = (url: string) => () => {
+    const cite = (url: string) => async () => {
         onCite(url)
+        let citeHTML = await fetchCitation(url)
         let json = localStorage.getItem('citations')
-        let urls = []
-        if(json) urls = JSON.parse(json)
-        if(!urls.find((element: string) => {return element==url})) urls.push(url)
-        localStorage.setItem('citations', JSON.stringify(urls))
+        let citations = []
+        if(json) citations = JSON.parse(json)
+        if(!citations.find((element: string) => {return element==citeHTML})) citations.push(citeHTML)
+        localStorage.setItem('citations', JSON.stringify(citations))
     }
 
     const onClickLink = (link: Link) => () => {

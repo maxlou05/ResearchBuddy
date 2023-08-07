@@ -1,37 +1,42 @@
-//citations.tsx is just a separate page since idk how to use this one
-//combine later 
+'use client'
 
-import fetchCitation from './fetchCitation';
-import parseData from './parseData';
-import Citations from "./citations";
 import React, { useEffect, useState } from 'react';
-import { create } from 'domain';
+import fetchCitation from './fetchCitation';
 
-// list of URS --> will  need to import this from the other section of the program
-const urls = [
-    'https://www.atatus.com/blog/how-to-perform-http-requests-with-axios-a-complete-guide/#:~:text=Axios%20Get%20Request,-Axios%20can%20make&text=get()%20method%20is%20used,should%20be%20supplied%20to%20it.',
-    'https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository',
-    // Add more URLs here
-];
+export default function Page() {
+  const [citations, setCitations] = useState([]);
 
-export default async function Page() { //what is this function
-    let json = localStorage.getItem('citations')
-    let urls = []
-    if (json) urls = JSON.parse(json)
-    return (
-        <div>
-            {urls.map(async (url:string) => {
+  useEffect(() => {
+    // Function to fetch citations from localStorage or set an empty array if not available
+    const getCitationsFromLocalStorage = () => {
+      const json = localStorage.getItem('citations');
+      if (json) {
+        return JSON.parse(json);
+      } else {
+        return [];
+      }
+    };
 
-                const citationHTML = await fetchCitation(url)
-                
-                const createMarkup = (c=citationHTML) => {
-                    return {__html: c}
-                }
+    const fetchCitations = async () => {
+      const citationsFromLocalStorage = getCitationsFromLocalStorage();
+      const fetchedCitations = await Promise.all(
+        citationsFromLocalStorage.map(async (url) => {
+          const citationHTML = await fetchCitation(url);
+          return citationHTML;
+        })
+      );
+      console.log(citationsFromLocalStorage)
+      setCitations(fetchedCitations);
+    };
 
-                return (
-                    <div dangerouslySetInnerHTML={createMarkup()}/>
-                )
-            })}
-        </div>
-    )
+    fetchCitations();
+  }, []);
+
+  return (
+    <div>
+      {citations.map((citationHTML) => (
+        <div dangerouslySetInnerHTML={{ __html: citationHTML }} />
+      ))}
+    </div>
+  );
 }
