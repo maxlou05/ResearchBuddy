@@ -21,7 +21,7 @@ interface Link {
 export default function Links({ links, onCite, onVisit } : { links: Link[], onCite: (link: Link) => void, onVisit: (link: Link) => void }) {
     const [autoCite, setAutoCite] = useState(false)
 
-    const cite = (link: Link) => async () => {
+    const cite_action = async (link: Link) => {
         onCite(link)
         let citeHTML = await fetchCitation(link.url)
         let json = localStorage.getItem('citations')
@@ -32,8 +32,12 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
         localStorage.setItem('citations', JSON.stringify(citations))
     }
 
+    const cite = (link: Link) => async () => {
+        cite_action(link)
+    }
+
     const onClickLink = (link: Link) => () => {
-        if(autoCite) onCite(link)
+        if(autoCite) cite_action(link)
         onVisit(link)
     }
 
