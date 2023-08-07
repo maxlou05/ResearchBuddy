@@ -87,7 +87,7 @@ export default function SearchBar() {
           <Links links={links} onCite={(link) => alert(`${link.name} has been cited!`)} onVisit={(link) => onVisit(link)}/>
 
           <div className='flex flex-col w-1/4'>
-            <p className="text-3xl font-bold mb-3 text-center">Explore more</p>
+            <p className="text-3xl font-bold mb-3">Explore more</p>
 
             <div>
               {results.map((topic) => (

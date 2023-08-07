@@ -7,6 +7,10 @@ import SchoolIcon from '@mui/icons-material/School'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import Link from "next/link"
+import Popup from "reactjs-popup"
+import 'reactjs-popup/dist/index.css'
+import fetchCitation from "../citations/fetchCitation"
+import Page from "../citations/page"
 
 interface Link {
     name: string,
@@ -17,13 +21,14 @@ interface Link {
 export default function Links({ links, onCite, onVisit } : { links: Link[], onCite: (link: Link) => void, onVisit: (link: Link) => void }) {
     const [autoCite, setAutoCite] = useState(false)
 
-    const cite = (link: Link) => () => {
+    const cite = (link: Link) => async () => {
         onCite(link)
+        let citeHTML = await fetchCitation(link.url)
         let json = localStorage.getItem('citations')
-        let urls = []
-        if(json) urls = JSON.parse(json)
-        if(!urls.find((element: string) => {return element==link.url})) urls.push(link.url)
-        localStorage.setItem('citations', JSON.stringify(urls))
+        let citations = []
+        if(json) citations = JSON.parse(json)
+        if(!citations.find((element: string) => {return element==citeHTML})) citations.push(citeHTML)
+        localStorage.setItem('citations', JSON.stringify(citations))
     }
 
     const onClickLink = (link: Link) => () => {
@@ -37,12 +42,11 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
                 <p className="text-2xl font-bold">{`${links.length} Results`}</p>
                 <div className="flex flex-col">
                     <FormControlLabel control={<Switch checked={autoCite} onChange={() => {setAutoCite(!autoCite)}} />} label="Auto-Cite" />
-                    <Link href="/citations">
-                        <button className="bg-transparent hover:bg-sky-500 text-sky-700 font-medium hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded text-sm">
+                    <Popup trigger={<button className="bg-transparent hover:bg-sky-500 text-sky-700 font-medium hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded text-sm">
                             View Citations
-                        </button>
-                    </Link>
-                    
+                        </button>} modal nested>
+                        <Page/>
+                    </Popup>
                 </div>
             </div>
             
