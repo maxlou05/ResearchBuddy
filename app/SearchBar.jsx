@@ -23,7 +23,7 @@ export default function SearchBar() {
     console.log(topics, links)
     setLinks(links)
     setResults(topics)
-    if(updateHist) setHistory([...history, {topic: q, links: links}])
+    if(updateHist) setHistory([...history, {topic: q, links: []}])
   }
 
   const topicClick = (topic) => async () => {
@@ -34,6 +34,22 @@ export default function SearchBar() {
   const historyClick = async (topic) => {
     setQuery(topic)
     await searchTopics(null, topic, false)
+  }
+
+  const onVisit = async (link, q=query) => {
+    var currentQuery = history.filter(item => {
+      return item.topic == q
+    })[0]
+
+    currentQuery.links.push(link)
+    console.log(currentQuery)
+
+    var newHistory = history.filter(item => {
+      return item.topic != q
+    })
+
+    console.log([...newHistory, currentQuery])
+    setHistory([...newHistory, currentQuery])
   }
 
   return (
@@ -61,7 +77,7 @@ export default function SearchBar() {
             ))}
           </div>
           
-          <Links links={links} onCite={(url) => alert(url)}/>
+          <Links links={links} onCite={(url) => alert(url)} onVisit={(link) => onVisit(link)}/>
         </div>
       </div>
     </>
