@@ -15,12 +15,10 @@ var qs = require('qs')
 
 const BIBIFY_URL = 'https://api.bibify.org'
 //const fetchHTML = async function (url) {
-export default async function fetchCitations(url: string){
+export default async function fetchCitation(url: string){
   const response = await axios.get(`${BIBIFY_URL}/api/website/?url=${url}`)
   const citeResponse = await axios.get(`${BIBIFY_URL}/api/cite?${qs.stringify({style: 'modern-language-association.csl', ...response.data})}`)
-  console.log(citeResponse.data)
+  return citeResponse.data[0]
 }
-
-fetchCitations('https://www.scientificamerican.com/article/largest-prime-number-disc/')
 
 //module.exports.fetchHTML = fetchHTML;
