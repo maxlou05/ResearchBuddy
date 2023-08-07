@@ -5,6 +5,7 @@ import getTopics from './search/getTopics'
 import SubTopic from './components/SubTopic'
 import getLinks from './search/getLinks'
 import History from './components/History'
+import Links from './components/Links'
 
 export default function SearchBar() {
   const [query, setQuery] = useState('')
@@ -37,7 +38,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="flex flex-col space-between">
+      <div className="flex flex-col justify-between">
         <form onSubmit={searchTopics}>
           <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
           <div className="relative" style={{width: 75 + 'em'}}>
@@ -59,6 +60,8 @@ export default function SearchBar() {
               <SubTopic title={topic} onTitleClick={topicClick(topic)}/>
             ))}
           </div>
+          
+          <Links links={links} onCite={(url) => alert(url)}/>
         </div>
       </div>
     </>

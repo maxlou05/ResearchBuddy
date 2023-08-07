@@ -17,7 +17,7 @@ export default function History({ hist, onRevisit }: { hist: {topic: string, lin
             <HistoryIcon className="text-3xl" onClick={() => {setVisible(!visible)}}/>
             
             {visible && // if visible is true, show the react element under
-                <div>
+                <div className="overflow-auto">
                     <p className="text-3xl p-6 font-bold">Research History</p>
                     {/* Use {} to indicate switch from HTML to JS */}
                     {hist.map((value: {topic: string, links: {name: string, url: string, status: number}[]}) => {
@@ -31,20 +31,20 @@ export default function History({ hist, onRevisit }: { hist: {topic: string, lin
                                     case 1:
                                         return (
                                             <div className="flex flex-row gap-3 ms-20 me-10">
-                                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light p-1 hover:text-sky-500">{link.name}</a>
+                                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light p-1 hover:text-sky-500 text-overflow">{link.name}</a>
                                                 <VerifiedIcon fontSize="small" className="self-center fill-sky-600"/>
                                             </div>
                                         )
                                     case 2:
                                         return (
                                             <div className="flex flex-row gap-3 ms-20 me-10">
-                                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light p-1 hover:text-sky-500">{link.name}</a>
+                                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light p-1 hover:text-sky-500 text-overflow">{link.name}</a>
                                                 <SchoolIcon fontSize="small" className="self-center fill-slate-600 dark:fill-slate-800"/>
                                             </div>
                                         )
                                     default:
                                         return (
-                                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light ms-20 me-10 p-1 max-w-min hover:text-sky-500">{link.name}</a>
+                                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light ms-20 me-10 p-1 max-w-min hover:text-sky-500 text-overflow">{link.name}</a>
                                         )
                                 }
                             })}

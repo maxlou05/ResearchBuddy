@@ -15,7 +15,7 @@ export default function Links({ links, onCite } : { links: {name: string, url: s
     return (
         <div className="flex flex-col justify-start font-sans gap-4">
             <div className="flex flex-row justify-between">
-                <p className="text-3xl font-bold">{`${links.length} Results`}</p>
+                <p className="text-2xl font-bold">{`${links.length} Results`}</p>
                 <FormControlLabel control={<Switch checked={autoCite} onChange={() => {setAutoCite(!autoCite)}} />} label="Auto-Cite" />
             </div>
             

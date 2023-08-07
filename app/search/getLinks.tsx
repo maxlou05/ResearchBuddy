@@ -57,8 +57,8 @@ export default async function getLinks(topic: string){
   return res;
 }
 
-async function printResult(){
-  let x = await getLinks("toronto maple leafs"); // input whatever topic you want to search
-  console.log(x);
-}
-printResult();
+// async function printResult(){
+//   let x = await getLinks("toronto maple leafs"); // input whatever topic you want to search
+//   console.log(x);
+// }
+// printResult();
