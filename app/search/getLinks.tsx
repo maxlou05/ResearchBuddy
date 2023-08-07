@@ -8,12 +8,9 @@ import axios from 'axios'
 // "https://www.nationalgeographic.com/","https://www.google.com/", "https://www.microsoft.com/en-ca/", ];
 
 
-let trustedSites : string [] = ["microsoft.com", "sagepub.com", "wikipedia.org", "tandfonline.com", "sciencedirect.com",
-"sciencedirect.com", "bbc.com", "economist.com", "wsj.com", "google.com", "theguardian.com", "cnn.com", "britannica.com",
-"nasa.gov", "scientificamerican.com", "popsci.com", "nationalgeographic.com"]
+let trustedSites : string [] = ["microsoft.com", "sagepub.com", "wikipedia.org", "tandfonline.com", "bbc.com", "economist.com", "wsj.com", "google.com", "theguardian.com", "cnn.com", "britannica.com", "nasa.gov", "scientificamerican.com", "popsci.com", "nationalgeographic.com"]
 
-let researchSites : string[] = ["brilliant.org", "researchgate.net", "scholar.google.ru", "jstor.org", "academia.edu", 
-"wisc.edu"]
+let researchSites : string[] = ["brilliant.org", "researchgate.net", "scholar.google.ru", "jstor.org", "academia.edu", "sciencedirect.com", "harvard.edu", "wisc.edu"]
 
 
 
