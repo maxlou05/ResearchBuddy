@@ -1,5 +1,5 @@
 
-# Research Buddy -  A web app that streamlines  formal research
+# [Research Buddy](https://research-buddy.vercel.app/) -  A web app that streamlines  formal research
 
 ## Inspiration 🔥
 
