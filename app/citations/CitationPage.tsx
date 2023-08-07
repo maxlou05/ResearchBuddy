@@ -73,7 +73,7 @@ export default function Page() {
         </button>
         <div ref={citationRef}>
           {citations.map((citationHTML) => (
-            <div className="flex flex-row pt-6">
+            <div className="flex flex-row pt-6" key={citationHTML}>
               <div dangerouslySetInnerHTML={{ __html: citationHTML }}/>
               <DeleteIcon className="cursor-pointer" onClick={() => deleteCitation(citationHTML)}/>
             </div>

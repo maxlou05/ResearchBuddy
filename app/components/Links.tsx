@@ -10,7 +10,7 @@ import Link from "next/link"
 import Popup from "reactjs-popup"
 import 'reactjs-popup/dist/index.css'
 import fetchCitation from "../citations/fetchCitation"
-import Page from "../citations/page"
+import Page from "../citations/CitationPage"
 
 interface Link {
     name: string,
@@ -55,7 +55,7 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
                 switch (link.status) {
                     case 1:
                         return (
-                            <div className="flex flex-col font-sans">
+                            <div className="flex flex-col font-sans" key={link.name}>
                                 <div className="flex flex-row justify-start p-1 gap-5 items-center">
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
                                     <VerifiedIcon fontSize="small" className="self-center fill-sky-600"/>
@@ -66,7 +66,7 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
                         )
                     case 2:
                         return (
-                            <div className="flex flex-col font-sans">
+                            <div className="flex flex-col font-sans" key={link.name}>
                                 <div className="flex flex-row justify-start p-1 gap-5 items-center">
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
                                     <SchoolIcon fontSize="small" className="self-center fill-slate-600 dark:fill-slate-800"/>
@@ -77,7 +77,7 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
                         )
                     default:
                         return (
-                            <div className="flex flex-col font-sans">
+                            <div className="flex flex-col font-sans" key={link.name}>
                                 <div className="flex flex-row justify-start p-1 gap-5 items-center">
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
                                     <BookmarkAddIcon onClick={cite(link)}/>
