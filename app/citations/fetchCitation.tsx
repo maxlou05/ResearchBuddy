@@ -18,7 +18,7 @@ const BIBIFY_URL = 'https://api.bibify.org'
 export default async function fetchCitations(url: string){
   const response = await axios.get(`${BIBIFY_URL}/api/website/?url=${url}`)
   const citeResponse = await axios.get(`${BIBIFY_URL}/api/cite?${qs.stringify({style: 'modern-language-association.csl', ...response.data})}`)
-  console.log(citeResponse.data)
+  return citeResponse.data[0]
 }
 
 fetchCitations('https://www.scientificamerican.com/article/largest-prime-number-disc/')

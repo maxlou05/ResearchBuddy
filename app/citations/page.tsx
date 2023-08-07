@@ -1,11 +1,11 @@
 //citations.tsx is just a separate page since idk how to use this one
 //combine later 
 
-import axios from 'axios';
-import fetchHTML from './fetchCitation';
+import fetchCitation from './fetchCitation';
 import parseData from './parseData';
 import Citations from "./citations";
 import React, { useEffect, useState } from 'react';
+import { create } from 'domain';
 
 // list of URS --> will  need to import this from the other section of the program
 const urls = [
@@ -14,36 +14,21 @@ const urls = [
     // Add more URLs here
 ];
 
-
-
 export default async function Page() { //what is this function
-
-    // console.log('aaaaaaaaa')
-    // const response = await axios.get(urls[0])
-    // console.log(response)
-
     return (
         <div>
             {urls.map(async (url:string) => {
-                const html = await fetchHTML(url);
-                //console.log(html)
-                // if (html) {
-                const data = parseData(html, url);
-                // }
+
+                const citationHTML = await fetchCitation(url)
+                
+                const createMarkup = (c=citationHTML) => {
+                    return {__html: c}
+                }
 
                 return (
-                    <Citations data = {data}/>
+                    <div dangerouslySetInnerHTML={createMarkup()}/>
                 )
             })}
         </div>
-            
     )
 }
-
-//formerly: 
-//export default  function Citations() { 
-    //return (
-        //<h1>Citation list</h1>
-            
-    //)
-//}
