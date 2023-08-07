@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import getTopics from './search/getTopics'
 import SubTopic from './components/SubTopic'
 import getLinks from './search/getLinks'
@@ -43,8 +43,7 @@ export default function SearchBar() {
       return item.topic == q
     })[0]
 
-    currentQuery.links.push(link)
-    console.log(currentQuery)
+    if(!currentQuery.links.includes(link)) currentQuery.links.push(link)
 
     var newHistory = history.filter(item => {
       return item.topic != q

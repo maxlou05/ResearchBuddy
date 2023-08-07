@@ -15,6 +15,9 @@ const urls = [
 ];
 
 export default async function Page() { //what is this function
+    let json = localStorage.getItem('citations')
+    let urls = []
+    if (json) urls = JSON.parse(json)
     return (
         <div>
             {urls.map(async (url:string) => {
