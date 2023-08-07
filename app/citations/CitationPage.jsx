@@ -39,7 +39,7 @@ export default function Page() {
     const json = localStorage.getItem('citations')
     let citations = []
     if(json) citations = JSON.parse(json)
-    citations = citations.filter(c => {return c!=citation})
+    citations = citations.filter((c) => {return c!=citation})
 
     localStorage.setItem('citations', JSON.stringify(citations))
     setCitations(citations)
@@ -73,7 +73,7 @@ export default function Page() {
         </button>
         <div ref={citationRef}>
           {citations.map((citationHTML) => (
-            <div className="flex flex-row pt-6">
+            <div className="flex flex-row pt-6" key={citationHTML}>
               <div dangerouslySetInnerHTML={{ __html: citationHTML }}/>
               <DeleteIcon className="cursor-pointer" onClick={() => deleteCitation(citationHTML)}/>
             </div>

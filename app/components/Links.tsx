@@ -10,7 +10,7 @@ import Link from "next/link"
 import Popup from "reactjs-popup"
 import 'reactjs-popup/dist/index.css'
 import fetchCitation from "../citations/fetchCitation"
-import Page from "../citations/page"
+import Page from "../citations/CitationPage"
 
 interface Link {
     name: string,
@@ -21,7 +21,7 @@ interface Link {
 export default function Links({ links, onCite, onVisit } : { links: Link[], onCite: (link: Link) => void, onVisit: (link: Link) => void }) {
     const [autoCite, setAutoCite] = useState(false)
 
-    const cite = (link: Link) => async () => {
+    const cite_action = async (link: Link) => {
         onCite(link)
         let citeHTML = await fetchCitation(link.url)
         let json = localStorage.getItem('citations')
@@ -32,8 +32,12 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
         localStorage.setItem('citations', JSON.stringify(citations))
     }
 
+    const cite = (link: Link) => async () => {
+        cite_action(link)
+    }
+
     const onClickLink = (link: Link) => () => {
-        if(autoCite) onCite(link)
+        if(autoCite) cite_action(link)
         onVisit(link)
     }
 
@@ -55,10 +59,10 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
                 switch (link.status) {
                     case 1:
                         return (
-                            <div className="flex flex-col font-sans">
+                            <div className="flex flex-col font-sans" key={link.name}>
                                 <div className="flex flex-row justify-start p-1 gap-5 items-center">
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
-                                    <VerifiedIcon fontSize="small" className="self-center fill-sky-600"/>
+                                    <VerifiedIcon fontSize="small" className="self-center text-sky-600"/>
                                     <BookmarkAddIcon onClick={cite(link)}/>
                                 </div>
                                 <p className="text-sm ms-10 -mt-4">{link.url}</p>
@@ -66,10 +70,10 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
                         )
                     case 2:
                         return (
-                            <div className="flex flex-col font-sans">
+                            <div className="flex flex-col font-sans" key={link.name}>
                                 <div className="flex flex-row justify-start p-1 gap-5 items-center">
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
-                                    <SchoolIcon fontSize="small" className="self-center fill-slate-600 dark:fill-slate-800"/>
+                                    <SchoolIcon fontSize="small" className="self-center text-slate-600 dark:text-slate-800"/>
                                     <BookmarkAddIcon onClick={cite(link)}/>
                                 </div>
                                 <p className="text-sm ms-10 -mt-4">{link.url}</p>
@@ -77,7 +81,7 @@ export default function Links({ links, onCite, onVisit } : { links: Link[], onCi
                         )
                     default:
                         return (
-                            <div className="flex flex-col font-sans">
+                            <div className="flex flex-col font-sans" key={link.name}>
                                 <div className="flex flex-row justify-start p-1 gap-5 items-center">
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" onClick={onClickLink(link)} className="text-xl p-3 hover:text-sky-500">{link.name}</a>
                                     <BookmarkAddIcon onClick={cite(link)}/>

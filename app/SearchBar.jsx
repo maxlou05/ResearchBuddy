@@ -91,7 +91,7 @@ export default function SearchBar() {
 
             <div>
               {results.map((topic) => (
-                <SubTopic title={topic} onTitleClick={topicClick(topic)}/>
+                <SubTopic title={topic} onTitleClick={topicClick(topic)} key={topic}/>
               ))}
             </div>
           </div>

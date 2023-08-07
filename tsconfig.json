@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/SearchBar.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/SearchBar.jsx", "app/citations/CitationPage.jsx", "app/search/getTopics.jsx"],
   "exclude": ["node_modules"]
 }
