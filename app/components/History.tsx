@@ -39,14 +39,14 @@ export default function History({ hist, onRevisit }: { hist: {topic: string, lin
                                         return (
                                             <div className="flex flex-row gap-3 ms-10 me-6" key={link.name}>
                                                 <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light p-1 hover:text-sky-500 text-overflow">{link.name}</a>
-                                                <VerifiedIcon fontSize="small" className="self-center fill-sky-600"/>
+                                                <VerifiedIcon fontSize="small" className="self-center text-sky-600"/>
                                             </div>
                                         )
                                     case 2:
                                         return (
                                             <div className="flex flex-row gap-3 ms-10 me-6" key={link.name}>
                                                 <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-m font-light p-1 hover:text-sky-500 text-overflow">{link.name}</a>
-                                                <SchoolIcon fontSize="small" className="self-center fill-slate-600 dark:fill-slate-800"/>
+                                                <SchoolIcon fontSize="small" className="self-center text-slate-600 dark:text-slate-800"/>
                                             </div>
                                         )
                                     default:

@@ -26,7 +26,7 @@ export default async function getLinks(topic: string){
       var siteName = property.title;
       var siteStatus = 0;
       var siteURL = property.link;
-      console.log(property.displayLink)
+      // console.log(property.displayLink)
       for (let site of trustedSites){
         if (property.displayLink.includes(site)){
           siteStatus = 1;
