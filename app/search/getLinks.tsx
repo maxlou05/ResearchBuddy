@@ -14,7 +14,6 @@ export default async function getLinks(topic: string){
       var siteName = property.title;
       var siteStatus = 0;
       var siteURL = property.link;
-      // console.log(property.displayLink)
       for (let site of trustedSites){
         if (property.displayLink.includes(site)){
           siteStatus = 1;
@@ -32,38 +31,3 @@ export default async function getLinks(topic: string){
 
   return res;
 }
-
-
-
-
-
-
-
-
-// Testing
-// async function printResult(){
-//   let x = await getLinks("toronto maple leafs"); // input whatever topic you want to search
-//   console.log(x);
-// }
-// printResult();
-      // if (trustedSites.some(str => str.includes(property.displayLink))){
-      //   siteStatus = 1;
-      // } else if (researchSites.some(str => str.includes(property.displayLink))){
-      //   siteStatus = 2;
-      // } else{
-      //   siteStatus = 0;
-      // }
-
-// let trustedSites : string[] = ["https://academic.microsoft.com/home", "https://us.sagepub.com/en-us/nam/home",
-// "https://www.tandfonline.com/", "https://www.sciencedirect.com/", "https://www.academia.edu/", "http://digital.library.wisc.edu/1711.web/scopus",
-// "https://www.bbc.com/news", "https://www.economist.com/", "https://www.wsj.com/", "https://news.google.com/topstories?gl=US&hl=en-US&ceid=US:en&ceid=US:en",
-// "https://www.theguardian.com/international", "https://edition.cnn.com/", "https://www.wikipedia.org", "https://www.britannica.com",
-// "https://www.nasa.gov/", "https://www.scientificamerican.com/", "https://www.popsci.com/", 
-// "https://www.nationalgeographic.com/","https://www.google.com/", "https://www.microsoft.com/en-ca/", ];
-
-  //console.log(response.data.items)
-  //const response = await axios.get("https://www.googleapis.com/customsearch/v1?key=AIzaSyCb_IwchS4Z4eT7P32JfWPO2B0cqG9Ffv0&cx=802145aa9dfb74ae6&q=" + topic)
-  
-
-    //console.log(response.data);
-  //console.log(response.data.items)
