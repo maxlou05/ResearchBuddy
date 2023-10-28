@@ -2,7 +2,7 @@
 
 //Components:
   //fetchHTML: takes a URL as input and makes an HTTP GET request 
-  //to that URL using Axios. Returns the HTML content of the URL or 
+  //to that URL using Axios. Returns the HTML content of the URL 
   //null depending on if the request is successful or not
 
 //------------------------------------------------------------------//
